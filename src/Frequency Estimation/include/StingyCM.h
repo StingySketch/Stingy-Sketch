@@ -22,7 +22,7 @@ public:
 		d             	= _d;
 		hash_size	= (d == 2) ? 0x20 : 0x40;
 		hash_func	= (d == 2) ? MurmurHash32 : MurmurHash64B;
-		bias_range	= ((hash_size - ceil(log2(_w))) / (d - 1));
+		bias_range	= Min(((hash_size - ceil(log2(_w))) / (d - 1)),0x08);
 		bias_mask	= (((uint64_t)1) << bias_range) - 1;
 		w             	= (_w - (((d - 1) << bias_range) + 0x10)) >> bias_range << bias_range;
 		index_range	= Min(hash_size - bias_range * d, ceil(log2(w)) - bias_range);
@@ -31,7 +31,7 @@ public:
 		counter		= new char[w + ((d - 1) << bias_range) + 0x10](); 
 		for(int i = 0;i <= THR;i++){
 			prefch[i]=new uint64_t [d];
-			for(char j = 0;j < d;j++) prefch[i][j] = w + ((d - 1) << bias_range) + 0x8;	
+			for(char j = 0;j < d;j++) prefch[i][j] = w + ((d - 1) << bias_range) + 0xb;	
 		}	
 	}
 	void Carry(uint32_t loc) {

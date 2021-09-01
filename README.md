@@ -1,9 +1,12 @@
-# WavingSketch
+# Stingy Sketch
 
 ## Introduction
 
-In high-speed data streams, frequent items refer to items whose number of appearances exceeds a predefined threshold. Finding frequent items is a classic and critical problem in many applications, and unbiased estimation is an important aspect of this problem. However, existing algorithms which can achieve unbiased estimation suffer from poor accuracy. In this paper, we propose a new algorithm, WavingSketch, which is more accurate than existing unbiased algorithms while achieving unbiasedness. WavingSketch is also generic, and we show how it can be applied to three other different applications: finding heavy changes, finding persistent items, and finding Super-Spreaders.	We prove its unbiasedness and a much lower error compared with the state-of-the-art technique, Unbiased SpaceSaving. Our experimental results show that, compared with Unbiased SpaceSaving, WavingSketch increases the insertion throughput by 4.50 times in average and decreases the error to up to 9 * 10^6 times (66 times in average) in finding frequent items. For other applications, WavingSketch can also decrease the error to up to 56 times.
+Frequency estimation of items in highly skewed data streams is a fundamental and hot problem in recent years. The literature demonstrates that sketch is the most promising solution, but no existing sketch can achieve both great precision and fast speed with limited memory. To address this issue, we propose a new sketch framework called Stingy Sketch. Stingy Sketch uses Bit-pinching Counter Tree to allocate the appropriate number of counters for distinct items, and uses a pipelined prefetch technique Prophet Queue to accelerate without losing precision. More importantly, the two techniques are cooperative so that Stingy Sketch can improve accuracy and speed simultaneously. The extensive experimental results show that Stingy Sketch is at most 50%more accurate than the state of the art (SOTA) of accuracy-oriented sketches and is at most33%faster than the SOTA of speed-oriented sketches.
 
 ## Descriptions
 
-We provide the source codes of WavingSketch and the algorithms we compared with in the task of finding frequent items in `./src`. We also provide the source codes for the specific version of WavingSketch and the algorithms we compared with in the three applications in `./src`, respectively.
+We provide the source codes of Stingy Sketch and the algorithms we compared with in the task of frequency estimation in `./src/Frequency Estimation`. 
+
+We also the source codes of Stingy Sketch and the algorithms we compared with in the task of unbiased top-𝑘 detection  in`./src/Top-k Detection`. 
+

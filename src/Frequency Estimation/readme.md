@@ -1,44 +1,13 @@
-使用方法：
+# Source Codes for Frequency Estimation
 
-include：
+## Discriptions
 
-```c++
-#include "include/Choose_Ske.h"
-```
+- `Sketch.h`: The base class for Stingy Sketch and related algorithms for frequency estimation
+- `MurmurHash.h`: The hash function, from https://github.com/aappleby/smhasher/blob/master/src/MurmurHash3.cpp
 
-然后要使用时建立父类指针，调用函数Choose_Cketch(uint32_t w, uint32_t d, uint32_t hash_seed = 1000,int id)
+The contents of other sources are consistent with their names. The class name with PQ is the version that contains Prophet Queue. And the class name with HS is the version that contains Bounded Hash Split. You can get a pointer to the Sketch class through the function provided in `Choose_Ske.h`. All Sketch classes have interfaces Insert and Query. The number of bytes used, the number of hash functions, and the hash seed can be specified in the constructor of the Sketch class. 
 
-其中注意w是字节个数，原有代码有些可能是数组长度，我里面都改过了，现在应该只要传个总的空间参数就行
+## Run
 
-```
-Sketch *bcm;
-bcm=Choose_Sketch(w,d, i * 100,80);
-```
+We have prepared a sample of the CAIDA data set. To run, first run `make`, and a executable file `main` will be generate. Then `./main`, the result will be shown on the screen.
 
-同理id可以有下面这些
-
-```
-10：CM
-20：CU
-30：C
-等等，可以看Choose_Ske.h
-简单的用，
-要枚举所有，id从101到120
-枚举所有初始版本，10,20,30...80
-枚举所有HS版本，11,21,31...61
-枚举所有PQ版本，12,22,32...62
-
-```
-
-带HS表示有hash split，带PQ表示有hash split和Prophet queue
-
-然后使用:
-
-```
-bcm->Insert(key.c_str());
-bcm->Query(pr.first.c_str());
-```
-
-即可
-
-现在的应该都是可以跑的

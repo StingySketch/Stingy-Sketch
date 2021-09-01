@@ -1,4 +1,5 @@
 # Source Codes
 
-- source code for WavingSketch and related algorithms for finding frequent items in `./frequent`
-- source code for WavingSketch and related algorithms for three applications in `./app`
+- source code for Stingy Sketch and related algorithms for frequency estimation in `./Frequency Estimation`
+- source code for Stingy Sketch and related algorithms for unbiased top-𝑘 detection in `./Top-k Detection`
+
