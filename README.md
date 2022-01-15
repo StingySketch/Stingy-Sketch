@@ -10,3 +10,5 @@ We provide the source codes of Stingy Sketch and the algorithms we compared with
 
 We also the source codes of Stingy Sketch and the algorithms we compared with in the task of unbiased top-𝑘 detection  in`./src/Top-k Detection`. 
 
+We have uploaded the pdf of the technical report at `./StingySketch_AccurateAndFastFrequencyEstimation(TechnicalReport).pdf`.
+
